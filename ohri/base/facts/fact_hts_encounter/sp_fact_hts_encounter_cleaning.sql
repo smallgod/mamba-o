@@ -1,7 +1,6 @@
 USE analysis;
 
 -- $BEGIN
-
 -- Update with 1/0 values
 SET @column_labels = (
     SELECT GROUP_CONCAT(column_label SEPARATOR ', ') AS 'column_label'
@@ -65,5 +64,4 @@ SET @column_labels = (
         ));
 
 CALL sp_multiselect_values_update('flat_encounter_hts', @column_labels, '1', '0');
-
 -- $END

@@ -3,7 +3,6 @@ USE analysis;
 DROP TABLE IF EXISTS mamba_dim_concept_metadata;
 
 -- $BEGIN
-
 CREATE TABLE mamba_dim_concept_metadata
 (
     concept_metadata_id INT           NOT NULL AUTO_INCREMENT,
@@ -23,5 +22,4 @@ CREATE TABLE mamba_dim_concept_metadata
 --     ADD COLUMN `encounter_type_id` INT NULL AFTER `output_table_name`,
 --     ADD CONSTRAINT `fk_encounter_type_id`
 --         FOREIGN KEY (`encounter_type_id`) REFERENCES `mamba_dim_encounter_type` (`encounter_type_id`);
-
 -- $END

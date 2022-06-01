@@ -40,6 +40,6 @@ BEGIN
     DEALLOCATE PREPARE deletetb;
     DEALLOCATE PREPARE createtb;
 
-END//
+END //
 
 DELIMITER ;

@@ -137,7 +137,6 @@ then
     all_stored_procedures="USE $database;
 
 $clear_objects_sql
-
 "
 
     if [ ! -n "$database" ]
@@ -164,6 +163,12 @@ $clear_objects_sql
         sp_name="$file_name"
         sp_body=$(awk '/-- \$BEGIN/,/-- \$END/' $WORKING_DIR/$file_path)
 
+        prefix='-- $BEGIN'
+        suffix='-- $END'
+
+        sp_body=${sp_body#"$prefix"}
+        sp_body=${sp_body%"$suffix"}
+
         if [ -z "$sp_body" ]
         then
               sp_body=`cat $WORKING_DIR/$file_path`
@@ -183,15 +188,14 @@ $sp_body
 -- $sp_name
 --
 
-DROP PROCEDURE IF EXISTS $sp_name;
 DELIMITER //
+
+DROP PROCEDURE IF EXISTS $sp_name;
+
 CREATE PROCEDURE $sp_name()
 BEGIN
-
 $sp_body
-
-END
-//
+END //
 "
         fi
 
@@ -212,7 +216,7 @@ then
     BUILD_DIR="$WORKING_DIR/build"
     create_directory_if_absent "$BUILD_DIR"
 
-    views_body="USE $database ;
+    views_body="USE $database;
 
 $clear_objects_sql
 

@@ -19,6 +19,6 @@ BEGIN
     -- Result
     select (@end_time - @start_time) / 1000;
 
-END//
+END //
 
 DELIMITER ;

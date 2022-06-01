@@ -40,7 +40,7 @@ BEGIN
     EXECUTE drop_view;
     DEALLOCATE PREPARE drop_view;
 
-END//
+END //
 
 DELIMITER ;
 
@@ -105,7 +105,7 @@ USE dbo;
 #     CREATE TEMPORARY TABLE IF NOT EXISTS tmps
 #     SELECT @drop_sp;
 #
-# END//
+# END //
 #
 # DELIMITER ;
 #

@@ -12,6 +12,6 @@ BEGIN
     CALL dbo.sp_xf_system_drop_all_tables_in_schema(database_name);
     # CALL dbo.sp_xf_system_drop_all_views_in_schema (database_name);
 
-END//
+END //
 
 DELIMITER ;

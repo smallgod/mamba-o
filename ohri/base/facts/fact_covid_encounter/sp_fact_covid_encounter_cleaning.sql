@@ -1,7 +1,6 @@
 USE analysis;
 
 -- $BEGIN
-
 -- Update multi-select value with 1/0
 SET @column_labels = (
     SELECT GROUP_CONCAT(column_label SEPARATOR ', ') AS 'column_label'
@@ -58,5 +57,4 @@ SET @column_labels = (
     ));
 
 CALL sp_multiselect_values_update('flat_encounter_covid', @column_labels, '1', '0');
-
 -- $END
