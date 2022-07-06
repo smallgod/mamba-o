@@ -1,1 +1,1 @@
-../../compile.sh -d analysis -s sp_makefile
+../../compile.sh -d iss -s sp_makefile

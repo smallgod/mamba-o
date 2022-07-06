@@ -13,7 +13,7 @@ UPDATE mamba_dim_concept_metadata md
     INNER JOIN mamba_dim_concept c
     ON md.concept_uuid = c.uuid
     INNER JOIN mamba_dim_concept_answer ca
-    ON ca.answer_concept = c.external_concept_id
+    ON ca.answer_concept = c.concept_id
 SET md.concept_answer_obs = 1
 WHERE md.concept_metadata_id > 0;
 -- $END
