@@ -82,5 +82,8 @@ facts/fact_covid_encounter/sp_fact_covid_encounter_insert.sql
 facts/fact_covid_encounter/sp_fact_covid_encounter_cleaning.sql
 facts/fact_covid_encounter/sp_fact_covid_encounter.sql
 
+facts/fact_ugemr_art_encounter/sp_fact_art_encounter_create.sql
+facts/fact_ugemr_art_encounter/sp_fact_art_encounter_insert.sql
+facts/fact_ugemr_art_encounter/sp_fact_art_encounter.sql
 
 sp_mamba_data_processing.sql
