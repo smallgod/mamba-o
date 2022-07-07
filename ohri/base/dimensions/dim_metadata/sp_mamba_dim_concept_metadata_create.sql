@@ -17,6 +17,7 @@ CREATE TABLE mamba_dim_concept_metadata
     flat_table_name          NVARCHAR(255) NOT NULL,
     rendering                NVARCHAR(255) NULL,
     encounter_type_uuid      CHAR(38)      NOT NULL,
+    encounter_type           INT           NOT NULL,
 
     PRIMARY KEY (mamba_id)
 );
@@ -29,6 +30,9 @@ CREATE INDEX index_concept_uuid
 
 CREATE INDEX index_encounter_type_uuid
     ON mamba_dim_concept_metadata (encounter_type_uuid);
+
+CREATE INDEX index_encounter_type
+    ON mamba_dim_concept_metadata (encounter_type);
 
 -- ALTER TABLE `mamba_dim_concept_metadata`
 --     ADD COLUMN `encounter_type_id` INT NULL AFTER `output_table_name`,

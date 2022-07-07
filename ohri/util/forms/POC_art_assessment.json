@@ -1,0 +1,784 @@
+{
+	"name": "POC ART Card - Clinical Assessment Page",
+	"pages": [
+		{
+			"label": "Appointment and Vitals",
+			"sections": [
+				{
+					"label": "Appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit Date ",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "dce153a7-30ab-102d-86b0-7a5022ba4115",
+								"weeksList": ""
+							},
+							"id": "visit_date"
+						},
+						{
+							"label": "Return Date",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "dcac04cf-30ab-102d-86b0-7a5022ba4115",
+								"weeksList": ""
+							},
+							"id": "return_date"
+						},
+						{
+							"label": "Visit on Schedule",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "radio",
+								"concept": "dc9fdc12-30ab-102d-86b0-7a5022ba4115",
+								"answers": [
+									{
+										"label": "yes",
+										"concept": "dcd695dc-30ab-102d-86b0-7a5022ba4115"
+									},
+									{
+										"label": "no",
+										"concept": "dcd69c06-30ab-102d-86b0-7a5022ba4115"
+									}
+								]
+							},
+							"id": "visit_on_schedule"
+						},
+						{
+							"label": "Reason for Next Appointment",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "160288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"answers": [
+									{
+										"concept": "ab4510ac-3feb-4abb-8653-5d252813798f",
+										"label": "ART Initiation",
+										"conceptMappings": []
+									},
+									{
+										"concept": "e06ac289-2920-4b85-80c9-805c69b6e5a9",
+										"label": "ART Refill",
+										"conceptMappings": []
+									},
+									{
+										"concept": "4b19b253-97c4-4b1b-bb14-41f2c576b8c5",
+										"label": "ART Regimen Switch/ Substitution",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dc8d83e3-30ab-102d-86b0-7a5022ba4115",
+										"label": "HIV VIRAL LOAD",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcbcba2c-30ab-102d-86b0-7a5022ba4115",
+										"label": "CD4 COUNT",
+										"conceptMappings": []
+									},
+									{
+										"concept": "5def0b16-460a-494b-ab1f-ac8e398a88fa",
+										"label": "T.B Drug Refill",
+										"conceptMappings": []
+									},
+									{
+										"concept": "801b8959-4b2a-46c0-a28f-f7d3fc8b98bb",
+										"label": "ANC Visit",
+										"conceptMappings": []
+									},
+									{
+										"concept": "3f0f9c04-25a4-4070-84cc-5b49566aeb4c",
+										"label": "EID Visit",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcd7e8e5-30ab-102d-86b0-7a5022ba4115",
+										"label": "PMTCT",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dc8f22f9-30ab-102d-86b0-7a5022ba4115",
+										"label": "HYPERTENSION",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcbc7b8e-30ab-102d-86b0-7a5022ba4115",
+										"label": "NUTRITIONAL SUPPORT",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcd68a88-30ab-102d-86b0-7a5022ba4115",
+										"label": "OTHER SPECIFY",
+										"conceptMappings": []
+									},
+									{
+										"concept": "163153AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Intensive adherence counseling sessions set",
+										"conceptMappings": []
+									},
+									{
+										"concept": "32dbfbc2-0f6c-4beb-88d0-55e0ee1a7b8c",
+										"label": "CLINICAL ASSESSMENT",
+										"conceptMappings": []
+									},
+									{
+										"concept": "77cd3409-b088-42dd-af70-47673b222042",
+										"label": "Refill",
+										"conceptMappings": []
+									},
+									{
+										"concept": "e496b6a9-d6e7-4470-bdf5-165028ab4e20",
+										"label": "Family Planning Refill",
+										"conceptMappings": []
+									},
+									{
+										"concept": "e17524f4-4445-417e-9098-ecdd134a6b81",
+										"label": "Other reason for appointment",
+										"conceptMappings": []
+									},
+									{
+										"concept": "347e93a0-72c2-400f-9579-116ce3ba6a68",
+										"label": "Checkup",
+										"conceptMappings": []
+									},
+									{
+										"concept": "24fe86b4-b945-48f7-aac2-8976588a54e7",
+										"label": "Booking",
+										"conceptMappings": []
+									},
+									{
+										"concept": "66e0322d-6e4f-409d-b37c-ca9e58b5a157",
+										"label": "Ultrasound",
+										"conceptMappings": []
+									},
+									{
+										"concept": "aab0ab6d-400c-4654-b0d9-71f79f2f5269",
+										"label": "Lockdown",
+										"conceptMappings": []
+									},
+									{
+										"concept": "e021a3a4-25f0-4ecb-b94c-9162c9980414",
+										"label": "Natural Disaster",
+										"conceptMappings": []
+									},
+									{
+										"concept": "165043AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Admission",
+										"conceptMappings": []
+									}
+								]
+							},
+							"id": "reason_for_next_appointment"
+						},
+						{
+							"label": "Other Reason for Next Appointment",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "e17524f4-4445-417e-9098-ecdd134a6b81"
+							},
+							"id": "other_reason_for_next_appointment"
+						}
+					]
+				},
+				{
+					"label": "Vitals",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Height (cm)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "LOINC",
+										"value": "8302-2"
+									},
+									{
+										"type": "SNOMED CT",
+										"value": "CT: 50373000"
+									},
+									{
+										"type": "AMPATH",
+										"value": "5090"
+									},
+									{
+										"type": "PIH Malawi",
+										"value": "Malawi: 5090"
+									},
+									{
+										"type": "CIEL",
+										"value": "5090"
+									},
+									{
+										"type": "PIH",
+										"value": "5090"
+									}
+								]
+							},
+							"id": "height"
+						},
+						{
+							"label": "Weight (kg)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "weight"
+							},
+							"id": "weight"
+						},
+						{
+							"label": "Temperature (oC)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5088AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "LOINC",
+										"value": "8310-5"
+									},
+									{
+										"type": "org.openmrs.module.mdrtb",
+										"value": "TEMPERATURE"
+									},
+									{
+										"type": "CIEL",
+										"value": "5088"
+									},
+									{
+										"type": "SNOMED NP",
+										"value": "NP: 386725007"
+									},
+									{
+										"type": "PIH",
+										"value": "5088"
+									},
+									{
+										"type": "AMPATH",
+										"value": "5088"
+									}
+								]
+							},
+							"id": "temperature"
+						},
+						{
+							"label": "Respiratory Rate",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "Respiratory"
+							},
+							"id": "respiratory_rate"
+						},
+						{
+							"label": "Heart Rate (/m)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5087AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "CIEL",
+										"value": "5087"
+									},
+									{
+										"type": "AMPATH",
+										"value": "5087"
+									},
+									{
+										"type": "LOINC",
+										"value": "8867-4"
+									},
+									{
+										"type": "SNOMED CT",
+										"value": "CT: 78564009"
+									},
+									{
+										"type": "org.openmrs.module.mdrtb",
+										"value": "PULSE"
+									},
+									{
+										"type": "PIH",
+										"value": "5087"
+									}
+								]
+							},
+							"id": "heart_rate"
+						}
+					]
+				},
+				{
+					"label": "Blood Pressure",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Systolic Blood Pressure",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5085AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "LOINC",
+										"value": "8480-6"
+									},
+									{
+										"type": "AMPATH",
+										"value": "5085"
+									},
+									{
+										"type": "CIEL",
+										"value": "5085"
+									},
+									{
+										"type": "PIH",
+										"value": "5085"
+									},
+									{
+										"type": "SNOMED CT",
+										"value": "CT: 271649006"
+									},
+									{
+										"type": "PIH Malawi",
+										"value": "Malawi: 5085"
+									},
+									{
+										"type": "org.openmrs.module.mdrtb",
+										"value": "SYSTOLIC BLOOD PRESSURE"
+									},
+									{
+										"type": "LOINC",
+										"value": "53665-6"
+									}
+								]
+							},
+							"id": "systolic_blood_pressure"
+						},
+						{
+							"label": "Diastolic Blood Pressure",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "PIH",
+										"value": "5086"
+									},
+									{
+										"type": "LOINC",
+										"value": "35094-2"
+									},
+									{
+										"type": "LOINC",
+										"value": "8462-4"
+									},
+									{
+										"type": "PIH Malawi",
+										"value": "Malawi: 5086"
+									},
+									{
+										"type": "CIEL",
+										"value": "5086"
+									},
+									{
+										"type": "SNOMED CT",
+										"value": "CT: 271650006"
+									},
+									{
+										"type": "AMPATH",
+										"value": "5086"
+									}
+								]
+							},
+							"id": "diastolic_blood_pressure"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Nutrition Assessment",
+			"sections": [
+				{
+					"label": "Nutritional Assessment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Height (cm)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "LOINC",
+										"value": "8302-2"
+									},
+									{
+										"type": "SNOMED CT",
+										"value": "CT: 50373000"
+									},
+									{
+										"type": "AMPATH",
+										"value": "5090"
+									},
+									{
+										"type": "PIH Malawi",
+										"value": "Malawi: 5090"
+									},
+									{
+										"type": "CIEL",
+										"value": "5090"
+									},
+									{
+										"type": "PIH",
+										"value": "5090"
+									}
+								]
+							},
+							"id": "height"
+						},
+						{
+							"label": "Weight (kg)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "weight"
+							},
+							"id": "weight"
+						},
+						{
+							"label": "BMI",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "dca1f717-30ab-102d-86b0-7a5022ba4115"
+							},
+							"id": "bmi"
+						},
+						{
+							"label": "MUAC (cm)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"conceptMappings": [
+									{
+										"type": "SNOMED CT",
+										"value": "CT: 284473002"
+									},
+									{
+										"type": "AMPATH",
+										"value": "1343"
+									},
+									{
+										"type": "PIH",
+										"value": "1290"
+									},
+									{
+										"type": "CIEL",
+										"value": "1343"
+									}
+								]
+							},
+							"id": "muac_cm"
+						},
+						{
+							"label": "MUAC Code",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "radio",
+								"concept": "5f86d19d-9546-4466-89c0-6f80c101191b",
+								"answers": [
+									{
+										"concept": "de330d01-5586-4eed-a645-e04b6bd13701",
+										"label": "RED",
+										"conceptMappings": []
+									},
+									{
+										"concept": "8846c03f-67bf-4aeb-8ca7-39bf79b4ebf3",
+										"label": "GREEN",
+										"conceptMappings": []
+									},
+									{
+										"concept": "a3b1734c-4743-4b9d-8e71-08d0459d29b9",
+										"label": "YELLOW",
+										"conceptMappings": []
+									}
+								]
+							},
+							"id": "muac_code"
+						},
+						{
+							"label": "Nutritional Status",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "165050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"answers": [
+									{
+										"concept": "dc9816bd-30ab-102d-86b0-7a5022ba4115",
+										"label": "NORMAL",
+										"conceptMappings": []
+									},
+									{
+										"concept": "a4543170-8155-41c7-b618-da6962b81f45",
+										"label": "SEVERE ACUTE MALNUTRITION",
+										"conceptMappings": []
+									},
+									{
+										"concept": "e4d7bc04-14e6-4ed2-a0d8-1ad85314b071",
+										"label": "SEVERE ACUTE MALNUTRITION WITH OEDEMA",
+										"conceptMappings": []
+									},
+									{
+										"concept": "267a937a-f03c-487b-963c-1858f1382a5a",
+										"label": "MODERATE ACUTE MALNUTRITION",
+										"conceptMappings": []
+									},
+									{
+										"concept": "001c08bb-ac87-4c0a-9272-da17324f5b3b",
+										"label": "OVER WEIGHT",
+										"conceptMappings": []
+									}
+								]
+							},
+							"id": "nutritional_status"
+						},
+						{
+							"label": "Nutritional Support",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "8531d1a7-9793-4c62-adab-f6716cf9fabb",
+								"answers": [
+									{
+										"concept": "cfbed699-fbf4-4346-a4a3-1b5c57d2902e",
+										"label": "INFANT FEEDING COUNSELING",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcd68a88-30ab-102d-86b0-7a5022ba4115",
+										"label": "OTHER SPECIFY",
+										"conceptMappings": []
+									},
+									{
+										"concept": "76d127ee-7e5b-467a-b1d4-eab8ebcf2c37",
+										"label": "FOOD SUPPORT",
+										"conceptMappings": []
+									},
+									{
+										"concept": "598dba00-b878-474c-9a10-9998f1748228",
+										"label": "THERAPEUTIC FEEDING",
+										"conceptMappings": []
+									},
+									{
+										"concept": "7cb048f9-550b-4be2-9eb9-cc8e19c87041",
+										"label": "NUTRITION COUNSELLING ONLY >2YRS",
+										"conceptMappings": []
+									}
+								]
+							},
+							"id": "nutritional_support"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Family Planning",
+			"sections": [
+				{
+					"label": "Family Planning",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "On Family Planning",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "radio",
+								"concept": "dcb2e4e5-30ab-102d-86b0-7a5022ba4115",
+								"answers": [
+									{
+										"label": "yes",
+										"concept": "dcd695dc-30ab-102d-86b0-7a5022ba4115"
+									},
+									{
+										"label": "no",
+										"concept": "dcd69c06-30ab-102d-86b0-7a5022ba4115"
+									}
+								]
+							},
+							"id": "on_family_planning"
+						},
+						{
+							"label": "Family Planning Methods",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "multicheckbox",
+								"concept": "dc7620b3-30ab-102d-86b0-7a5022ba4115",
+								"answers": [
+									{
+										"concept": "dcb30ba3-30ab-102d-86b0-7a5022ba4115",
+										"label": "INJECTABLE CONTRACEPTIVES",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcdd91a7-30ab-102d-86b0-7a5022ba4115",
+										"label": "TUBAL LIGATION",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcb2fba9-30ab-102d-86b0-7a5022ba4115",
+										"label": "FEMALE STERILIZATION",
+										"conceptMappings": []
+									},
+									{
+										"concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Other",
+										"conceptMappings": [
+											{
+												"type": "PIH Malawi",
+												"value": "Malawi: 6408"
+											},
+											{
+												"type": "org.openmrs.module.mdrtb",
+												"value": "OTHER"
+											},
+											{
+												"type": "CIEL",
+												"value": "5622"
+											},
+											{
+												"type": "SNOMED MVP",
+												"value": "MVP: 56221000105001"
+											},
+											{
+												"type": "PIH",
+												"value": "5622"
+											},
+											{
+												"type": "AMPATH",
+												"value": "5622"
+											},
+											{
+												"type": "SNOMED NP",
+												"value": "NP: 74964007"
+											}
+										]
+									},
+									{
+										"concept": "dcb30381-30ab-102d-86b0-7a5022ba4115",
+										"label": "NATURAL FAMILY PLANNING",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcb307b2-30ab-102d-86b0-7a5022ba4115",
+										"label": "DIAPHRAGM",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dc692ad3-30ab-102d-86b0-7a5022ba4115",
+										"label": "CONDOMS",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcb2f595-30ab-102d-86b0-7a5022ba4115",
+										"label": "INTRAUTERINE DEVICE",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dc882c84-30ab-102d-86b0-7a5022ba4115",
+										"label": "ORAL CONTRACEPTION",
+										"conceptMappings": []
+									},
+									{
+										"concept": "163144AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Delamanid",
+										"conceptMappings": []
+									},
+									{
+										"concept": "4b0899f2-395e-4e0f-8b58-d304b214615e",
+										"label": "Microgynon",
+										"conceptMappings": []
+									},
+									{
+										"concept": "670b7048-d71e-483a-b2ec-f10d2326dd84",
+										"label": "Male Condoms",
+										"conceptMappings": []
+									},
+									{
+										"concept": "aeee4ccf-cbf8-473c-9d9f-846643afbf11",
+										"label": "Female Condoms",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dcdd8d8d-30ab-102d-86b0-7a5022ba4115",
+										"label": "VASECTOMY",
+										"conceptMappings": []
+									},
+									{
+										"concept": "fed07c37-7bb6-4baa-adf9-596ce4c4e93c",
+										"label": "PP -IUD",
+										"conceptMappings": []
+									},
+									{
+										"concept": "bb83fd9d-24c5-4d49-89c0-97e13c792aaf",
+										"label": "Implant",
+										"conceptMappings": []
+									},
+									{
+										"concept": "dd4c3016-13cf-458a-8e93-fe54460be667",
+										"label": "PAC - IUD",
+										"conceptMappings": []
+									},
+									{
+										"concept": "3e18cafc-8edc-4648-94b3-835de371a2f2",
+										"label": "Depo",
+										"conceptMappings": []
+									},
+									{
+										"concept": "aaf150a5-92d2-416f-8254-95d34ed9c4ab",
+										"label": "No family planning method given",
+										"conceptMappings": []
+									},
+									{
+										"concept": "a93e2540-f059-4edd-a1d9-57673af8c6e8",
+										"label": null,
+										"conceptMappings": []
+									},
+									{
+										"concept": "160570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Emergency contraceptive pills",
+										"conceptMappings": []
+									},
+									{
+										"concept": "164814AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Female condom",
+										"conceptMappings": []
+									},
+									{
+										"concept": "164813AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Male condom",
+										"conceptMappings": []
+									}
+								]
+							},
+							"id": "family_planning_methods"
+						}
+					]
+				}
+			]
+		}
+	],
+	"processor": "EncounterFormProcessor",
+	"uuid": "8d5b2be0-c2cc-11de-8d13-0010c6dffd0f",
+	"referencedForms": []
+}
