@@ -13,7 +13,6 @@ BEGIN
     SET @computed_obs_encounter_id := NULL;
     SET @request_encounter_type := NULL;
     SET @concept_encounter_type := NULL;
-    SET @compute_type := NULL;
     SET @compute_procedure := NULL;
     SET @concept_label := NULL;
     SET @regimen := NULL;
@@ -28,11 +27,10 @@ BEGIN
     -- Initialise all relevant variables
     SELECT m.computed_obs_encounter_type_id,
            m.concept_encounter_type_id,
-           m.obs_compute_type,
-           m.obs_compute_procedure_name,
+           m.compute_procedure_name,
            m.concept_label,
            e.encounter_type
-    INTO @computed_obs_encounter_type, @concept_encounter_type, @compute_type, @compute_procedure, @concept_label, @request_encounter_type
+    INTO @computed_obs_encounter_type, @concept_encounter_type, @compute_procedure, @concept_label, @request_encounter_type
     FROM mamba_obs_compute_metadata m INNER JOIN encounter e ON m.concept_encounter_type_id = e.encounter_type
     WHERE e.encounter_id = encounterid AND e.patient_id = patientid AND m.concept_id = conceptid;
 
