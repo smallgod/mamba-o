@@ -1,5 +1,4 @@
 -- Trigger to insert into temp queuing Table for computed obs
-use openmrs_dev;
 
 DELIMITER //
 
@@ -10,9 +9,7 @@ CREATE TRIGGER after_obs_insert
     ON obs
     FOR EACH ROW
 BEGIN
-
-    CALL sp_compute_obs_queue_insert(NEW.encounter_id ,NEW.concept_id, NEW.person_id);
-
+    CALL sp_compute_obs_queue_insert(NEW.encounter_id, NEW.concept_id, NEW.person_id);
 END//
 
 DELIMITER ;

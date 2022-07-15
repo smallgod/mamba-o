@@ -10,8 +10,7 @@ CREATE PROCEDURE sp_compute_obs_helper(
 )
 BEGIN
     -- DECLARE handler_name VARCHAR(38) DEFAULT CONCAT('handle', event_type);
-
-    SET @compute_obs_procedure_sql = CONCAT('CALL ', procedure_name, '(?,?,?)');
+    SET @compute_obs_procedure_sql = CONCAT('CALL ', procedure_name, '(?,?,?);');
 
     PREPARE prepared_statement FROM @compute_obs_procedure_sql;
 
