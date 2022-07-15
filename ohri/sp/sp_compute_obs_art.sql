@@ -1,11 +1,9 @@
-use openmrs_dev;
-
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS sp_compute_obs_art;
 
-CREATE PROCEDURE sp_compute_obs_art(IN conceptid INT,
-                                    IN encounterid INT,
+CREATE PROCEDURE sp_compute_obs_art(IN encounterid INT,
+                                    IN conceptid INT,
                                     IN patientid INT)
 
 sp:
