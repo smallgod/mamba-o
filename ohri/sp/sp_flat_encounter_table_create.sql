@@ -3,21 +3,28 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS sp_flat_encounter_table_create;
 
 CREATE PROCEDURE sp_flat_encounter_table_create(
-    IN flat_encounter_table_name NVARCHAR(255)
+    IN encounter_type_uuid CHAR(38)
 )
 BEGIN
 
     SET session group_concat_max_len = 20000;
     SET @column_labels := NULL;
 
-    SET @drop_table = CONCAT('DROP TABLE IF EXISTS `', flat_encounter_table_name, '`');
+    SET @form_name = (SELECT DISTINCT (form_name)
+                      FROM mamba_dim_form_data fd
+                      WHERE fd.encounter_type_uuid = encounter_type_uuid);
+    SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
 
-    SELECT GROUP_CONCAT(column_label SEPARATOR ' TEXT, ') INTO @column_labels
-                     FROM mamba_dim_concept_metadata
-                     WHERE flat_table_name = flat_encounter_table_name;
+    SET @drop_table = CONCAT('DROP TABLE IF EXISTS `', @tbl_name, '`');
+
+    SELECT GROUP_CONCAT(column_label SEPARATOR ' TEXT, ')
+    INTO @column_labels
+    FROM mamba_dim_form_data fd
+    WHERE fd.encounter_type_uuid = encounter_type_uuid;
 
     SET @create_table = CONCAT(
-            'CREATE TABLE `', flat_encounter_table_name ,'` (encounter_id INT, client_id INT, ', @column_labels, ' TEXT);');
+            'CREATE TABLE `', @tbl_name, '` (encounter_id INT, client_id INT, ', @column_labels,
+            ' TEXT);');
 
     PREPARE deletetb FROM @drop_table;
     PREPARE createtb FROM @create_table;

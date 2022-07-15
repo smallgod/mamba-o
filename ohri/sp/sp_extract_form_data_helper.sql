@@ -37,14 +37,16 @@ BEGIN
                                             form_concept_id,
                                             concept_rendering,
                                             concept_uuid,
-                                            concept_label)
+                                            concept_label,
+                                            column_label)
             SELECT e.encounter_type_id,
                    @et_uuid,
                    JSON_UNQUOTE(@form_name),
                    JSON_UNQUOTE(@id),
                    JSON_UNQUOTE(@rendering),
                    JSON_UNQUOTE(@concept_uuid),
-                   JSON_UNQUOTE(@label)
+                   JSON_UNQUOTE(@label),
+                   JSON_UNQUOTE(@id)
             FROM mamba_dim_encounter_type e
             where e.uuid = @et_uuid;
 

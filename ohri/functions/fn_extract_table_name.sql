@@ -1,21 +1,22 @@
 DELIMITER //
 
-DROP FUNCTION IF EXISTS fn_get_obs_value_column;
+DROP FUNCTION IF EXISTS fn_extract_table_name;
 
-CREATE FUNCTION fn_get_obs_value_column(conceptDatatype VARCHAR(20)) RETURNS VARCHAR(20)
+CREATE FUNCTION fn_extract_table_name(input_string TEXT) RETURNS TEXT
     DETERMINISTIC
 BEGIN
-    DECLARE obsValueColumn VARCHAR(20);
+    DECLARE flat_table_name TEXT;
 
-    IF (conceptDatatype = 'Text' OR conceptDatatype = 'Coded' OR conceptDatatype = 'N/A' OR conceptDatatype = 'Boolean') THEN
-        SET obsValueColumn = 'obs_value_text';
-    ELSEIF conceptDatatype = 'Date' OR conceptDatatype = 'Datetime' THEN
-        SET obsValueColumn = 'obs_value_datetime';
-    ELSEIF conceptDatatype = 'Numeric' THEN
-        SET obsValueColumn = 'obs_value_numeric';
-    END IF;
+    SET flat_table_name = 'flat';
+    SET input_string = LCASE(CONCAT(TRIM(input_string), ' ')); -- removing any preceding space, add trailing space
 
-    RETURN (obsValueColumn);
+    WHILE LOCATE(' ', input_string) >= 1
+        DO
+            SET flat_table_name = CONCAT(flat_table_name, '_', SUBSTRING_INDEX(input_string, ' ', 1));
+            SET input_string = REPLACE(input_string, LEFT(input_string, LOCATE(' ', input_string)), '');
+
+        END WHILE;
+    RETURN (flat_table_name);
 END //
 
 DELIMITER ;

@@ -1,8 +1,8 @@
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS sp_extract_metadata_from_form;
+DROP PROCEDURE IF EXISTS sp_extract_form_data;
 
-CREATE PROCEDURE sp_extract_metadata_from_form(
+CREATE PROCEDURE sp_extract_form_data(
     IN report_data MEDIUMTEXT,
     IN metadata_table NVARCHAR(255)
 )
