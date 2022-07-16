@@ -1,6 +1,4 @@
 -- Scheduler / Event fired every 1 minute to compute & insert/update
-use openmrs_dev;
-
 DELIMITER //
 
 DROP EVENT IF EXISTS SCHEDULE_COMPUTED_OBS;
@@ -24,15 +22,23 @@ CREATE EVENT IF NOT EXISTS SCHEDULE_COMPUTED_OBS
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
     OPEN cursor_pending_computations;
-    REPEAT
+    computations_loop:
+    LOOP
         FETCH cursor_pending_computations INTO patientid, conceptid, encounterid, procedure_name;
 
-        CALL sp_compute_obs_helper(procedure_name, encounterid, conceptid, patientid);
+        IF done THEN
+            LEAVE computations_loop;
+        END IF;
 
-        DELETE FROM mamba_computed_obs_queue
-        WHERE compute_procedure_name = procedure_name AND patient_id = patientid AND encounter_id = encounterid;
+        insert into mamba_demo(patient, encounter, concept, computetype, created_on)
+        values (patientid, encounterid, conceptid, procedure_name, now());
 
-    UNTIL done END REPEAT;
+         CALL sp_compute_obs(procedure_name, encounterid, conceptid, patientid);
+
+         DELETE FROM mamba_computed_obs_queue
+         WHERE compute_procedure_name = procedure_name AND patient_id = patientid AND encounter_id = encounterid AND concept_id = conceptid;
+
+    END LOOP computations_loop;
     CLOSE cursor_pending_computations;
 END
 //

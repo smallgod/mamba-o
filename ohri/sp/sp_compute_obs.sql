@@ -1,8 +1,8 @@
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS sp_compute_obs_helper;
+DROP PROCEDURE IF EXISTS sp_compute_obs;
 
-CREATE PROCEDURE sp_compute_obs_helper(
+CREATE PROCEDURE sp_compute_obs(
     IN procedure_name VARCHAR(50),
     IN obs_encounter_id INT,
     IN obs_concept_id INT,
