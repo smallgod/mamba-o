@@ -30,8 +30,8 @@ CREATE EVENT IF NOT EXISTS SCHEDULE_COMPUTED_OBS
             LEAVE computations_loop;
         END IF;
 
-        insert into mamba_demo(patient, encounter, concept, computetype, created_on)
-        values (patientid, encounterid, conceptid, procedure_name, now());
+        -- insert into mamba_demo(patient, encounter, concept, computetype, created_on)
+        -- values (patientid, encounterid, conceptid, procedure_name, now());
 
          CALL sp_compute_obs(procedure_name, encounterid, conceptid, patientid);
 
