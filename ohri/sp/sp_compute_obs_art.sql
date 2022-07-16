@@ -40,12 +40,14 @@ BEGIN
     -- Fetch the Regimen concept_id & the Regimen value_coded (if any) that was captured in this Encounter
     SELECT o.concept_id , o.value_coded INTO regimen_id, regimen FROM obs o
         INNER JOIN mamba_obs_compute_metadata m ON o.concept_id = m.concept_id
-        WHERE m.concept_label = 'regimen' AND o.encounter_id = encounterid AND o.person_id = patientid;
+        WHERE m.concept_label = 'regimen' AND o.encounter_id = encounterid AND o.person_id = patientid
+    ORDER BY obs_id DESC LIMIT 1;
 
     -- Fetch the Regimen Line concept_id & the Regimen  Line value_coded (if any) that was captured in this Encounter
     SELECT o.concept_id , o.value_coded INTO regimen_line_id, regimen_line FROM obs o
         INNER JOIN mamba_obs_compute_metadata m ON o.concept_id = m.concept_id
-        WHERE m.concept_label = 'regimen_line' AND o.encounter_id = encounterid AND o.person_id = patientid;
+        WHERE m.concept_label = 'regimen_line' AND o.encounter_id = encounterid AND o.person_id = patientid
+    ORDER BY obs_id DESC LIMIT 1;
 
     -- Fetch the saved computed Obs Encounter Id for this Patient
      SELECT e.encounter_id INTO computed_obs_encounter_id FROM encounter e
