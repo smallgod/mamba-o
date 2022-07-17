@@ -98,7 +98,7 @@ BEGIN
         ELSE
             -- Compare previously computed/stored Regimen Date with this new Regimen Date
             SET regimen_date_difference = DATEDIFF(regimen_date, STR_TO_DATE(previous_regimen_date, '%Y-%m-%d %H:%i:%s'));
-            IF regimen_date_difference > 0 THEN
+            IF regimen_date_difference >= 0 THEN
 
                 UPDATE obs SET value_coded = regimen
                 WHERE concept_id = regimen_id AND encounter_id = computed_obs_encounter_id AND person_id = patientid;
