@@ -40,6 +40,7 @@ BEGIN
             SET @page_number = @page_number + 1;
         END WHILE;
 
-END //
+END;
+//
 
 DELIMITER ;

@@ -2,6 +2,7 @@
 
 DELIMITER //
 
+-- Obs Insert Trigger
 DROP TRIGGER IF EXISTS after_obs_insert;
 
 CREATE TRIGGER after_obs_insert
@@ -12,6 +13,8 @@ BEGIN
     CALL sp_compute_obs_queue_insert(NEW.encounter_id, NEW.concept_id, NEW.person_id);
 END;
 
+
+-- Obs Update Trigger
 DROP TRIGGER IF EXISTS after_obs_update;
 
 CREATE TRIGGER after_obs_update

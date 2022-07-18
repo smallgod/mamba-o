@@ -30,9 +30,6 @@ CREATE EVENT IF NOT EXISTS SCHEDULE_COMPUTED_OBS
             LEAVE computations_loop;
         END IF;
 
-        -- insert into mamba_demo(patient, encounter, concept, computetype, created_on)
-        -- values (patientid, encounterid, conceptid, procedure_name, now());
-
          CALL sp_compute_obs(procedure_name, encounterid, conceptid, patientid);
 
          DELETE FROM mamba_computed_obs_queue
@@ -40,7 +37,7 @@ CREATE EVENT IF NOT EXISTS SCHEDULE_COMPUTED_OBS
 
     END LOOP computations_loop;
     CLOSE cursor_pending_computations;
-END
+END;
 //
 
 DELIMITER ;

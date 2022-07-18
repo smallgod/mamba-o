@@ -42,6 +42,7 @@ BEGIN
     EXECUTE inserttbl;
     DEALLOCATE PREPARE inserttbl;
 
-END //
+END;
+//
 
 DELIMITER ;

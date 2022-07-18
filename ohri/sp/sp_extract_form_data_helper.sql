@@ -53,6 +53,7 @@ BEGIN
             SET @question_number = @question_number + 1;
         END WHILE;
 
-END //
+END;
+//
 
 DELIMITER ;

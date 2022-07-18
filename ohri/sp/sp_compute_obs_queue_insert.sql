@@ -45,7 +45,7 @@ BEGIN
     END LOOP get_computation;
     CLOSE cursor_affected_computations;
 
-END
+END;
 //
 
 DELIMITER ;

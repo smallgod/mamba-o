@@ -27,6 +27,7 @@ BEGIN
     CREATE INDEX idx_encounter_id
         ON mamba_computed_obs_queue (encounter_id);
 
-END //
+END;
+//
 
 DELIMITER ;

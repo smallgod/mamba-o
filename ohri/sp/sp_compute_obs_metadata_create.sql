@@ -30,6 +30,7 @@ BEGIN
     CREATE INDEX idx_compute_procedure_name
         ON mamba_obs_compute_metadata (compute_procedure_name);
 
-END //
+END;
+//
 
 DELIMITER ;

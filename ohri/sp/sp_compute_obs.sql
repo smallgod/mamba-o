@@ -18,7 +18,7 @@ BEGIN
     PREPARE prepared_statement FROM @compute_obs_procedure_sql;
     EXECUTE prepared_statement USING @obs_encounter_id, @obs_concept_id, @person_id;
     DEALLOCATE PREPARE prepared_statement;
-END
+END;
 //
 
 DELIMITER ;
