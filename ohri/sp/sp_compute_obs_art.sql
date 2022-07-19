@@ -1,3 +1,4 @@
+
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS sp_compute_obs_art;
@@ -24,12 +25,12 @@ BEGIN
 
     -- Initialise all relevant variables
     SELECT m.computed_obs_encounter_type_id,
-           m.concept_encounter_type_id,
+           m.obs_encounter_type_id,
            m.compute_procedure_name,
            m.concept_label,
            e.encounter_type
     INTO computed_obs_encounter_type, concept_encounter_type, compute_procedure, concept_label, request_encounter_type
-    FROM mamba_obs_compute_metadata m INNER JOIN encounter e ON m.concept_encounter_type_id = e.encounter_type
+    FROM mamba_obs_compute_metadata m INNER JOIN encounter e ON m.obs_encounter_type_id = e.encounter_type
     WHERE e.encounter_id = encounterid AND e.patient_id = patientid AND m.concept_id = conceptid;
 
     -- Don't Compute if obs is not computable (i.e. we didn't find a procedure name)
@@ -55,8 +56,8 @@ BEGIN
 
     IF (concept_label = 'stop_date') THEN
 
-        -- Delete both the computed Regimen & Regimen Line (if any) for this Patient since they have Stopped trtmt
-        DELETE FROM obs WHERE encounter_id = computed_obs_encounter_id AND person_id = patientid;
+        -- Delete both the computed Regimen & Regimen Line (if any) for this Patient since they have Stopped TX
+        DELETE FROM obs WHERE encounter_id = computed_obs_encounter_id AND person_id = patientid AND concept_id in (regimen_id, regimen_line_id);
         LEAVE sp;
 
     ELSEIF (concept_label = 'start_date'

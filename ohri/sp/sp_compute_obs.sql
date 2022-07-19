@@ -9,7 +9,6 @@ CREATE PROCEDURE sp_compute_obs(
     IN person_id INT
 )
 BEGIN
-    -- DECLARE handler_name VARCHAR(38) DEFAULT CONCAT('handle', event_type);
     SET @compute_obs_procedure_sql = CONCAT('CALL ', procedure_name, '(?,?,?);');
     SET @obs_encounter_id = obs_encounter_id;
     SET @obs_concept_id = obs_concept_id;

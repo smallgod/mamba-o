@@ -1,4 +1,5 @@
 -- Scheduler / Event fired every 1 minute to compute & insert/update
+
 DELIMITER //
 
 DROP EVENT IF EXISTS SCHEDULE_COMPUTED_OBS;
