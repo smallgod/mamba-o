@@ -1,4 +1,5 @@
 -- Trigger to insert into temp queuing Table for computed obs
+use openmrs_working;
 
 DELIMITER //
 
