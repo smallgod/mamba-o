@@ -57,5 +57,3 @@ END;
 //
 
 DELIMITER ;
-
-select * from mamba_dim_form_data;
