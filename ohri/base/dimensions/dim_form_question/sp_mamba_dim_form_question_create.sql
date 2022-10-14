@@ -9,13 +9,11 @@ CREATE TABLE mamba_dim_form_question
     encounter_type_id   INT           NOT NULL,
     encounter_type_uuid CHAR(38)      NOT NULL,
     form_name           NVARCHAR(255) NOT NULL,
-    form_concept_id     NVARCHAR(255) NOT NULL,
+    form_id     NVARCHAR(255) NOT NULL,
     concept_rendering   NVARCHAR(255) NOT NULL,
     concept_uuid        CHAR(38)      NOT NULL,
-    concept_parent_uuid CHAR(38)      NULL,
     concept_label       TEXT          NULL,
-    column_label        NVARCHAR(255) NULL,
-    is_concept_answer   TINYINT(1)    NOT NULL DEFAULT 0,
+    column_label        NVARCHAR(255) NULL
 
     PRIMARY KEY (mamba_id)
 );

@@ -3,59 +3,49 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS sp_extract_form_questions;
 
 CREATE PROCEDURE sp_extract_form_questions(
-    IN question_array MEDIUMTEXT,
-    IN encounter_type_uuid VARCHAR(38),
-    IN form_name TEXT
+    IN extract_question BOOLEAN,
+    IN report_data MEDIUMTEXT,
+    IN metadata_table NVARCHAR(255)
 )
 BEGIN
 
-    DECLARE question_type VARCHAR(255);
     SET session group_concat_max_len = 20000;
 
-    SELECT JSON_LENGTH(@question_array) INTO @question_count;
+    -- TRUNCATE TABLE metadata_table;
 
-    SET @question_number = 0;
-    WHILE @question_number < @question_count
+    SELECT JSON_EXTRACT(report_data, '$.name') INTO @form_name;
+    SELECT JSON_EXTRACT(report_data, '$.encounterType') INTO @encounter_type_uuid;
+    SELECT JSON_EXTRACT(report_data, '$.pages') INTO @page_array;
+    SELECT JSON_LENGTH(@page_array) INTO @page_count;
+
+    SET @page_number = 0;
+    WHILE @page_number < @page_count
         DO
-            SELECT JSON_EXTRACT(question_array, CONCAT('$[', @question_number, ']')) INTO @question;
 
-            SELECT JSON_EXTRACT(@question, '$.type') INTO @type;
-            -- SET question_type = JSON_UNQUOTE(@type);
-            -- IF question_type = 'obsGroup' THEN
-            SELECT JSON_EXTRACT(@question, '$.questionOptions') INTO @question_options;
-            SELECT JSON_EXTRACT(@question, '$.id') INTO @id;
-            SELECT JSON_EXTRACT(@question, '$.label') INTO @label;
-            SELECT JSON_EXTRACT(@question_options, '$.concept') INTO @concept_uuid;
-            SELECT JSON_EXTRACT(@question_options, '$.rendering') INTO @rendering;
+            SELECT JSON_EXTRACT(@page_array, CONCAT('$[', @page_number, ']')) INTO @page;
 
-            SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
-            SET @et_uuid = JSON_UNQUOTE(@encounter_type_uuid);
+            SELECT JSON_EXTRACT(@page, '$.sections') INTO @section_array;
+            SELECT JSON_LENGTH(@section_array) INTO @section_count;
 
-            INSERT INTO mamba_dim_form_question(encounter_type_id,
-                                            encounter_type_uuid,
-                                            form_name,
-                                            form_concept_id,
-                                            concept_rendering,
-                                            concept_uuid,
-                                            concept_label,
-                                            column_label)
-            SELECT e.encounter_type_id,
-                   @et_uuid,
-                   JSON_UNQUOTE(@form_name),
-                   JSON_UNQUOTE(@id),
-                   JSON_UNQUOTE(@rendering),
-                   JSON_UNQUOTE(@concept_uuid),
-                   JSON_UNQUOTE(@label),
-                   JSON_UNQUOTE(@id)
-            FROM mamba_dim_encounter_type e
-            where e.uuid = @et_uuid;
+            SET @section_number = 0;
+            WHILE @section_number < @section_count
+                DO
+                    SELECT JSON_EXTRACT(@section_array, CONCAT('$[', @section_number, ']')) INTO @section;
+                    SELECT JSON_EXTRACT(@section, '$.questions') INTO @question_array;
 
-            SET @question_number = @question_number + 1;
+                    IF extract_question THEN
+                        CALL sp_extract_form_questions(@question_array, @encounter_type_uuid, @form_name);
+                    ELSE
+                        CALL sp_extract_form_answers(@question_array, @encounter_type_uuid, @form_name);
+                    END IF;
+
+                    SET @section_number = @section_number + 1;
+                END WHILE;
+
+            SET @page_number = @page_number + 1;
         END WHILE;
 
 END;
 //
 
 DELIMITER ;
-
-select * from mamba_dim_form_question;

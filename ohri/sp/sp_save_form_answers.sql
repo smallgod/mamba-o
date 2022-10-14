@@ -1,8 +1,8 @@
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS sp_extract_form_answers;
+DROP PROCEDURE IF EXISTS sp_save_form_answers;
 
-CREATE PROCEDURE sp_extract_form_answers(
+CREATE PROCEDURE sp_save_form_answers(
     IN question_array MEDIUMTEXT,
     IN encounter_type_uuid VARCHAR(38),
     IN form_name TEXT
@@ -33,8 +33,8 @@ BEGIN
                     SET @et_uuid = JSON_UNQUOTE(@encounter_type_uuid);
                     SELECT JSON_EXTRACT(@answer_array, CONCAT('$[', @answer_number, ']')) INTO @answer;
 
-                    SELECT mamba_id INTO @form_question_id FROM mamba_dim_form_question
-                        WHERE encounter_type_uuid = @et_uuid AND form_concept_id = @id;
+                    SELECT mamba_id INTO @form_question_id FROM mamba_dim_form_question q
+                        WHERE q.encounter_type_uuid = @et_uuid AND q.form_concept_id = @id;
 
                     INSERT INTO mamba_dim_form_answer(form_question_id,
                                             concept_uuid,

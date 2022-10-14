@@ -16,8 +16,9 @@
 ../sp/sp_flat_encounter_table_create.sql
 ../sp/sp_flat_encounter_table_insert.sql
 ../sp/sp_multiselect_values_update.sql
-../sp/sp_extract_form_data_helper.sql
-../sp/sp_extract_form_data.sql
+../sp/sp_extract_form_questions.sql
+../sp/sp_save_form_question.sql
+../sp/sp_save_form_answer.sql
 ../sp/sp_split_string.sql
 ../sp/sp_load_agegroup.sql
 
