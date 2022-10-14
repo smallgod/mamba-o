@@ -13,7 +13,7 @@ CREATE TABLE mamba_dim_form_question
     concept_question_id NVARCHAR(255) NOT NULL,
     concept_rendering   NVARCHAR(255) NOT NULL,
     concept_uuid        CHAR(38)      NOT NULL,
-    concept_label       TEXT          NULL,
+    concept_label       TEXT,
 
     CONSTRAINT uk_encounter_formversion_questionid UNIQUE (form_version, encounter_type_uuid, concept_question_id),
     PRIMARY KEY (mamba_id)
@@ -30,8 +30,5 @@ CREATE INDEX index_question_id
 
 CREATE INDEX index_concept_uuid
     ON mamba_dim_form_question (concept_uuid);
-
-CREATE INDEX index_encounter_concept_uuid
-    ON mamba_dim_form_question (concept_uuid, encounter_type_uuid);
 
 -- $END

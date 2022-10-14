@@ -5,7 +5,8 @@ DROP PROCEDURE IF EXISTS sp_save_form_questions;
 CREATE PROCEDURE sp_save_form_questions(
     IN question_array MEDIUMTEXT,
     IN encounter_type_uuid VARCHAR(38),
-    IN form_name TEXT
+    IN form_name TEXT,
+    IN form_version CHAR(10) CHARACTER SET UTF8MB4
 )
 BEGIN
 
@@ -28,27 +29,26 @@ BEGIN
             SELECT JSON_EXTRACT(@question_options, '$.concept') INTO @concept_uuid;
             SELECT JSON_EXTRACT(@question_options, '$.rendering') INTO @rendering;
 
-            SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
-            SET @et_uuid = JSON_UNQUOTE(@encounter_type_uuid);
+            SET @tbl_name = fn_extract_table_name(form_name);
 
-            INSERT INTO mamba_dim_form_question(encounter_type_id,
-                                            encounter_type_uuid,
-                                            form_name,
-                                            form_concept_id,
-                                            concept_rendering,
-                                            concept_uuid,
-                                            concept_label,
-                                            column_label)
-            SELECT e.encounter_type_id,
-                   @et_uuid,
-                   JSON_UNQUOTE(@form_name),
+            INSERT INTO mamba_dim_form_question(form_name,
+                                                form_version,
+                                                encounter_type_id,
+                                                encounter_type_uuid,
+                                                concept_question_id,
+                                                concept_rendering,
+                                                concept_uuid,
+                                                concept_label)
+            SELECT form_name,
+                   form_version,
+                   e.encounter_type_id,
+                   encounter_type_uuid,
                    JSON_UNQUOTE(@id),
                    JSON_UNQUOTE(@rendering),
                    JSON_UNQUOTE(@concept_uuid),
-                   JSON_UNQUOTE(@label),
-                   JSON_UNQUOTE(@id)
+                   JSON_UNQUOTE(@label)
             FROM mamba_dim_encounter_type e
-            where e.uuid = @et_uuid;
+            where e.uuid = encounter_type_uuid;
 
             SET @question_number = @question_number + 1;
         END WHILE;
@@ -57,5 +57,3 @@ END;
 //
 
 DELIMITER ;
-
-select * from mamba_dim_form_question;

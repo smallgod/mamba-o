@@ -3,19 +3,18 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS sp_extract_form_questions;
 
 CREATE PROCEDURE sp_extract_form_questions(
-    IN extract_question BOOLEAN,
-    IN report_data MEDIUMTEXT,
-    IN metadata_table NVARCHAR(255)
-)
+    IN save_questions BOOLEAN,
+    IN form MEDIUMTEXT,
+    IN form_version CHAR(10) CHARACTER SET UTF8MB4)
 BEGIN
 
     SET session group_concat_max_len = 20000;
 
     -- TRUNCATE TABLE metadata_table;
 
-    SELECT JSON_EXTRACT(report_data, '$.name') INTO @form_name;
-    SELECT JSON_EXTRACT(report_data, '$.encounterType') INTO @encounter_type_uuid;
-    SELECT JSON_EXTRACT(report_data, '$.pages') INTO @page_array;
+    SELECT JSON_EXTRACT(form, '$.name') INTO @form_name;
+    SELECT JSON_EXTRACT(form, '$.encounterType') INTO @encounter_type_uuid;
+    SELECT JSON_EXTRACT(form, '$.pages') INTO @page_array;
     SELECT JSON_LENGTH(@page_array) INTO @page_count;
 
     SET @page_number = 0;
@@ -33,10 +32,10 @@ BEGIN
                     SELECT JSON_EXTRACT(@section_array, CONCAT('$[', @section_number, ']')) INTO @section;
                     SELECT JSON_EXTRACT(@section, '$.questions') INTO @question_array;
 
-                    IF extract_question THEN
-                        CALL sp_extract_form_questions(@question_array, @encounter_type_uuid, @form_name);
+                    IF save_questions THEN
+                        CALL sp_save_form_questions( @question_array, JSON_UNQUOTE(@encounter_type_uuid), JSON_UNQUOTE(@form_name), form_version);
                     ELSE
-                        CALL sp_extract_form_answers(@question_array, @encounter_type_uuid, @form_name);
+                        CALL sp_save_form_answers( @question_array, JSON_UNQUOTE(@encounter_type_uuid), form_version);
                     END IF;
 
                     SET @section_number = @section_number + 1;
