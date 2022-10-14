@@ -20,7 +20,7 @@ CREATE INDEX index_datatype_id
     ON mamba_dim_concept (datatype_id);
 
 ALTER TABLE `mamba_dim_concept`
-    ADD COLUMN `form_data_id` INT NOT NULL AFTER `concept_id`,
-    ADD CONSTRAINT `fk_form_data_id` FOREIGN KEY (`form_data_id`)
-        REFERENCES `mamba_dim_form_data` (`mamba_id`);
+    ADD COLUMN `form_question_id` INT NOT NULL AFTER `concept_id`,
+    ADD CONSTRAINT `fk_form_question_id` FOREIGN KEY (`form_question_id`)
+        REFERENCES `mamba_dim_form_question` (`mamba_id`);
 -- $END

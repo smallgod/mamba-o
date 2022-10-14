@@ -3,6 +3,7 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS sp_extract_form_data;
 
 CREATE PROCEDURE sp_extract_form_data(
+    IN extract_question BOOLEAN,
     IN report_data MEDIUMTEXT,
     IN metadata_table NVARCHAR(255)
 )
@@ -32,7 +33,11 @@ BEGIN
                     SELECT JSON_EXTRACT(@section_array, CONCAT('$[', @section_number, ']')) INTO @section;
                     SELECT JSON_EXTRACT(@section, '$.questions') INTO @question_array;
 
-                    CALL sp_extract_metadata_from_form_helper(@question_array, @encounter_type_uuid, @form_name);
+                    IF extract_question THEN
+                        CALL sp_extract_form_questions(@question_array, @encounter_type_uuid, @form_name);
+                    ELSE
+                        CALL sp_extract_form_answers(@question_array, @encounter_type_uuid, @form_name);
+                    END IF;
 
                     SET @section_number = @section_number + 1;
                 END WHILE;

@@ -10,7 +10,7 @@ BEGIN
     SET session group_concat_max_len = 20000;
 
     SET @form_name = (SELECT DISTINCT (form_name)
-                      FROM mamba_dim_form_data fd
+                      FROM mamba_dim_form_question fd
                       WHERE fd.encounter_type_uuid = encounter_type_uuid);
     SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
 
@@ -24,7 +24,7 @@ BEGIN
                                fn_get_obs_value_column(c.datatype_name), ' END) ', column_label)
                         ORDER BY fd.mamba_id ASC)
     INTO @column_labels
-    FROM mamba_dim_form_data fd
+    FROM mamba_dim_form_question fd
              INNER JOIN mamba_dim_concept c
                         ON fd.concept_uuid = c.uuid
     WHERE fd.encounter_type_uuid = encounter_type_uuid;
@@ -32,7 +32,7 @@ BEGIN
     SET @insert_stmt = CONCAT(
             'INSERT INTO `', @tbl_name, '` SELECT z.encounter_id, z.client_id, ', @column_labels, '
             FROM mamba_z_encounter_obs z
-                INNER JOIN mamba_dim_form_data fd
+                INNER JOIN mamba_dim_form_question fd
                     ON IF(fd.is_concept_answer=1, fd.concept_uuid=z.obs_value_coded_uuid, fd.concept_uuid=z.obs_question_uuid)
             WHERE fd.encounter_type_uuid = ''', encounter_type_uuid, '''
                 AND z.encounter_type_id = fd.encounter_type_id

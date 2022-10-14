@@ -11,7 +11,7 @@ CREATE TABLE mamba_z_encounter_obs
 
     PRIMARY KEY (mamba_id)
     -- CONSTRAINT `fk_form_data_id`
-    --   FOREIGN KEY (`form_data_id`) REFERENCES `mamba_dim_form_data` (`mamba_id`)
+    --   FOREIGN KEY (`form_data_id`) REFERENCES `mamba_dim_form_question` (`mamba_id`)
 )
 SELECT o.encounter_id,
        e.encounter_type AS encounter_type_id,
@@ -30,7 +30,7 @@ FROM obs o
                     ON o.encounter_id = e.encounter_id
          INNER JOIN mamba_dim_concept c
                     ON o.concept_id = c.concept_id
-WHERE e.encounter_type IN (SELECT DISTINCT (fd.encounter_type_id) FROM mamba_dim_form_data fd);
+WHERE e.encounter_type IN (SELECT DISTINCT (fd.encounter_type_id) FROM mamba_dim_form_question fd);
 
 CREATE INDEX index_encounter_id
     ON mamba_z_encounter_obs (encounter_id);

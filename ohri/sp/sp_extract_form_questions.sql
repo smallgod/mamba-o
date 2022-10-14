@@ -1,9 +1,9 @@
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS sp_extract_metadata_from_form_helper;
+DROP PROCEDURE IF EXISTS sp_extract_form_questions;
 
-CREATE PROCEDURE sp_extract_metadata_from_form_helper(
-    IN question_json_array MEDIUMTEXT,
+CREATE PROCEDURE sp_extract_form_questions(
+    IN question_array MEDIUMTEXT,
     IN encounter_type_uuid VARCHAR(38),
     IN form_name TEXT
 )
@@ -17,7 +17,7 @@ BEGIN
     SET @question_number = 0;
     WHILE @question_number < @question_count
         DO
-            SELECT JSON_EXTRACT(question_json_array, CONCAT('$[', @question_number, ']')) INTO @question;
+            SELECT JSON_EXTRACT(question_array, CONCAT('$[', @question_number, ']')) INTO @question;
 
             SELECT JSON_EXTRACT(@question, '$.type') INTO @type;
             -- SET question_type = JSON_UNQUOTE(@type);
@@ -31,7 +31,7 @@ BEGIN
             SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
             SET @et_uuid = JSON_UNQUOTE(@encounter_type_uuid);
 
-            INSERT INTO mamba_dim_form_data(encounter_type_id,
+            INSERT INTO mamba_dim_form_question(encounter_type_id,
                                             encounter_type_uuid,
                                             form_name,
                                             form_concept_id,
@@ -58,4 +58,4 @@ END;
 
 DELIMITER ;
 
-select * from mamba_dim_form_data;
+select * from mamba_dim_form_question;

@@ -1,9 +1,9 @@
 USE analysis;
 
-DROP TABLE IF EXISTS mamba_dim_form_data;
+DROP TABLE IF EXISTS mamba_dim_form_question;
 
 -- $BEGIN
-CREATE TABLE mamba_dim_form_data
+CREATE TABLE mamba_dim_form_question
 (
     mamba_id            INT           NOT NULL AUTO_INCREMENT,
     encounter_type_id   INT           NOT NULL,
@@ -21,18 +21,18 @@ CREATE TABLE mamba_dim_form_data
 );
 
 CREATE INDEX index_encounter_type_id
-    ON mamba_dim_form_data (encounter_type_id);
+    ON mamba_dim_form_question (encounter_type_id);
 
 CREATE INDEX index_encounter_type_uuid
-    ON mamba_dim_form_data (encounter_type_uuid);
+    ON mamba_dim_form_question (encounter_type_uuid);
 
 CREATE INDEX index_form_concept_id
-    ON mamba_dim_form_data (form_concept_id);
+    ON mamba_dim_form_question (form_concept_id);
 
 CREATE INDEX index_concept_uuid
-    ON mamba_dim_form_data (concept_uuid);
+    ON mamba_dim_form_question (concept_uuid);
 
 CREATE INDEX index_encounter_concept_uuid
-    ON mamba_dim_form_data (concept_uuid, concept_parent_uuid, encounter_type_uuid);
+    ON mamba_dim_form_question (concept_uuid, concept_parent_uuid, encounter_type_uuid);
 
 -- $END

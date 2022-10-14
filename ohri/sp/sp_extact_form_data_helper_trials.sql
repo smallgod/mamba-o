@@ -31,7 +31,7 @@ BEGIN
             SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
             SET @et_uuid = JSON_UNQUOTE(@encounter_type_uuid);
 
-            INSERT INTO mamba_dim_form_data(encounter_type_id,
+            INSERT INTO mamba_dim_form_question(encounter_type_id,
                                             encounter_type_uuid,
                                             form_name,
                                             form_concept_id,

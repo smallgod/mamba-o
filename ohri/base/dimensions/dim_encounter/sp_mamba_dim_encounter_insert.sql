@@ -11,5 +11,5 @@ SELECT e.encounter_id,
        e.visit_id
 FROM encounter e
     WHERE e.encounter_type
-              IN (SELECT DISTINCT (fd.encounter_type_id) FROM mamba_dim_form_data fd);
+              IN (SELECT DISTINCT (fd.encounter_type_id) FROM mamba_dim_form_question fd);
 -- $END

@@ -11,7 +11,7 @@ BEGIN
     SET @column_labels := NULL;
 
     SET @form_name = (SELECT DISTINCT (form_name)
-                      FROM mamba_dim_form_data fd
+                      FROM mamba_dim_form_question fd
                       WHERE fd.encounter_type_uuid = encounter_type_uuid);
     SET @tbl_name = fn_extract_table_name(JSON_UNQUOTE(@form_name));
 
@@ -19,7 +19,7 @@ BEGIN
 
     SELECT GROUP_CONCAT(column_label SEPARATOR ' TEXT, ')
     INTO @column_labels
-    FROM mamba_dim_form_data fd
+    FROM mamba_dim_form_question fd
     WHERE fd.encounter_type_uuid = encounter_type_uuid;
 
     SET @create_table = CONCAT(
