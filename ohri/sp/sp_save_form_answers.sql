@@ -21,7 +21,6 @@ BEGIN
             SELECT JSON_EXTRACT(question_array, CONCAT('$[', @question_number, ']')) INTO @question;
 
             SELECT JSON_EXTRACT(@question, '$.id') INTO @id;
-            SELECT JSON_EXTRACT(@question, '$.label') INTO @label;
             SELECT JSON_EXTRACT(@question, '$.questionOptions') INTO @question_options;
             SELECT JSON_EXTRACT(@question_options, '$.concept') INTO @question_concept_uuid;
             SELECT JSON_EXTRACT(@question_options, '$.answers') INTO @answer_array;
@@ -40,9 +39,6 @@ BEGIN
                     WHERE q.form_version = form_version
                       AND q.encounter_type_uuid = encounter_type_uuid
                       AND q.concept_question_id = @concept_question_id;
-
-                    INSERT INTO iss.mamba_test_it(form_question_id, form_version, encounter_type_uuid, concept_question_id)
-                    SELECT form_question_id, form_version, encounter_type_uuid, @concept_question_id;
 
                     INSERT INTO mamba_dim_form_answer(fk_form_question_id,
                                                       question_concept_uuid,
