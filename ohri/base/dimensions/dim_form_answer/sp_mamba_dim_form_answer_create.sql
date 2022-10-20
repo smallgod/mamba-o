@@ -22,7 +22,3 @@ ALTER TABLE `mamba_dim_form_answer`
         REFERENCES `mamba_dim_form_question` (`mamba_id`);
 
 -- $END
-
-SELECT *
-FROM mamba_dim_form_answer
-WHERE question_concept_uuid = 'dc7620b3-30ab-102d-86b0-7a5022ba4115';

@@ -1,4 +1,4 @@
-USE analysis;
+USE iss;
 
 -- $BEGIN
 INSERT INTO mamba_dim_encounter(encounter_id,

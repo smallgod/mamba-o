@@ -1,4 +1,4 @@
-USE analysis;
+USE iss;
 DROP TABLE IF EXISTS mamba_dim_concept;
 
 -- $BEGIN
@@ -20,7 +20,7 @@ CREATE INDEX index_datatype_id
     ON mamba_dim_concept (datatype_id);
 
 ALTER TABLE `mamba_dim_concept`
-    ADD COLUMN `form_question_id` INT NOT NULL AFTER `concept_id`,
-    ADD CONSTRAINT `fk_form_question_id` FOREIGN KEY (`form_question_id`)
+    ADD COLUMN `fk_form_question_id` INT NOT NULL AFTER `mamba_id`,
+    ADD CONSTRAINT `fk_form_question_id_constraint` FOREIGN KEY (`fk_form_question_id`)
         REFERENCES `mamba_dim_form_question` (`mamba_id`);
 -- $END

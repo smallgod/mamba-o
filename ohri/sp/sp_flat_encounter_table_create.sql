@@ -17,7 +17,7 @@ BEGIN
 
     SET @drop_table = CONCAT('DROP TABLE IF EXISTS `', @tbl_name, '`');
 
-    SELECT GROUP_CONCAT(column_label SEPARATOR ' TEXT, ')
+    SELECT GROUP_CONCAT(concept_question_id SEPARATOR ' TEXT, ')
     INTO @column_labels
     FROM mamba_dim_form_question fd
     WHERE fd.encounter_type_uuid = encounter_type_uuid;

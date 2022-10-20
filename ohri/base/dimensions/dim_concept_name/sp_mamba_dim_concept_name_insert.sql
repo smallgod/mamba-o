@@ -1,4 +1,4 @@
-USE analysis;
+USE iss;
 
 -- $BEGIN
 INSERT INTO mamba_dim_concept_name (concept_name_id,
