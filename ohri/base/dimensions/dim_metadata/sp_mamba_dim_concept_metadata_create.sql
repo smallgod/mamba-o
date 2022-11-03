@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS mamba_dim_concept_metadata;
 -- $BEGIN
 CREATE TABLE mamba_dim_concept_metadata
 (
-    mamba_id                 INT           NOT NULL AUTO_INCREMENT,
+    id                 INT           NOT NULL AUTO_INCREMENT,
     question_id              NVARCHAR(255) NULL,
     question_or_answer_label TEXT          NULL,
     column_number            INT,
@@ -19,7 +19,7 @@ CREATE TABLE mamba_dim_concept_metadata
     encounter_type_uuid      CHAR(38)      NOT NULL,
     encounter_type           INT           NOT NULL,
 
-    PRIMARY KEY (mamba_id)
+    PRIMARY KEY (id)
 );
 
 CREATE INDEX index_question_id

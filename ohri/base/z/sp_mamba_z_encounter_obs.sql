@@ -1,17 +1,17 @@
-USE iss;
+USE analysis;
 
 DROP TABLE IF EXISTS mamba_z_encounter_obs;
 
 -- $BEGIN
 CREATE TABLE mamba_z_encounter_obs
 (
-    mamba_id             INT      NOT NULL AUTO_INCREMENT,
+    id                   INT      NOT NULL AUTO_INCREMENT,
     obs_question_uuid    CHAR(38) NULL,
     obs_value_coded_uuid CHAR(38) NULL,
 
-    PRIMARY KEY (mamba_id)
+    PRIMARY KEY (id)
     -- CONSTRAINT `fk_form_question_id`
-    --   FOREIGN KEY (`form_question_id`) REFERENCES `mamba_dim_form_question` (`mamba_id`)
+    --   FOREIGN KEY (`form_question_id`) REFERENCES `mamba_dim_form_question` (`id`)
 )
 SELECT o.encounter_id,
        e.encounter_type AS encounter_type_id,

@@ -1,4 +1,4 @@
-USE iss;
+USE analysis;
 
 -- $BEGIN
 SET @form_version = '1.0';

@@ -22,7 +22,7 @@ BEGIN
     SELECT GROUP_CONCAT(DISTINCT
                         CONCAT(' MAX(CASE WHEN concept_question_id = ''', concept_question_id, ''' THEN ',
                                fn_get_obs_value_column(c.datatype_name), ' END) ', concept_question_id)
-                        ORDER BY fd.mamba_id ASC)
+                        ORDER BY fd.id ASC)
     INTO @column_labels
     FROM mamba_dim_form_question fd
              INNER JOIN mamba_dim_concept c

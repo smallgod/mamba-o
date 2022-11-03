@@ -34,7 +34,7 @@ BEGIN
                      SELECT JSON_EXTRACT(@answer, '$.concept') INTO @answer_concept_uuid;
                      SELECT JSON_EXTRACT(@answer, '$.label') INTO @answer_concept_label;
 
-                    SELECT mamba_id INTO form_question_id
+                    SELECT id INTO form_question_id
                     FROM mamba_dim_form_question q
                     WHERE q.form_version = form_version
                       AND q.encounter_type_uuid = encounter_type_uuid

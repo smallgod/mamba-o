@@ -5,14 +5,14 @@ DROP TABLE IF EXISTS mamba_dim_encounter;
 -- $BEGIN
 CREATE TABLE mamba_dim_encounter
 (
-    mamba_id           INT NOT NULL AUTO_INCREMENT,
+    id                 INT NOT NULL AUTO_INCREMENT,
     encounter_id       INT NOT NULL UNIQUE,
     encounter_type     INT NOT NULL,
 --    encounter_type_uuid CHAR(38) NULL,
     encounter_datetime DATETIME,
     visit_id           INT,
 
-    PRIMARY KEY (mamba_id)
+    PRIMARY KEY (id)
 );
 
 CREATE INDEX index_encounter_id

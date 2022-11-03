@@ -22,6 +22,15 @@
 ../sp/sp_split_string.sql
 ../sp/sp_load_agegroup.sql
 
+../sp/sp_compute_obs.sql
+../sp/sp_compute_obs_metadata_create.sql
+../sp/sp_compute_obs_queue_create.sql
+../sp/sp_compute_obs_queue_insert.sql
+../sp/sp_compute_obs_scheduler.sql
+../sp/sp_compute_obs_schedule_event.sql
+../sp/sp_compute_obs_trigger.sql
+../sp/sp_extract_form_questions.sql
+
 dimensions/dim_encounter_type/sp_mamba_dim_encounter_type_create.sql
 dimensions/dim_encounter_type/sp_mamba_dim_encounter_type_insert.sql
 dimensions/dim_encounter_type/sp_mamba_dim_encounter_type.sql
@@ -79,18 +88,18 @@ dimensions/dim_agegroup/sp_dim_agegroup.sql
 z/sp_mamba_z_encounter_obs.sql
 z/sp_mamba_z_tables.sql
 
-facts/fact_hts_encounter/sp_fact_hts_encounter_create.sql
-facts/fact_hts_encounter/sp_fact_hts_encounter_insert.sql
-facts/fact_hts_encounter/sp_fact_hts_encounter_cleaning.sql
-facts/fact_hts_encounter/sp_fact_hts_encounter.sql
+# facts/fact_hts_encounter/sp_fact_hts_encounter_create.sql
+# facts/fact_hts_encounter/sp_fact_hts_encounter_insert.sql
+# facts/fact_hts_encounter/sp_fact_hts_encounter_cleaning.sql
+# facts/fact_hts_encounter/sp_fact_hts_encounter.sql
 
-facts/fact_covid_encounter/sp_fact_covid_encounter_create.sql
-facts/fact_covid_encounter/sp_fact_covid_encounter_insert.sql
-facts/fact_covid_encounter/sp_fact_covid_encounter_cleaning.sql
-facts/fact_covid_encounter/sp_fact_covid_encounter.sql
+# facts/fact_covid_encounter/sp_fact_covid_encounter_create.sql
+# facts/fact_covid_encounter/sp_fact_covid_encounter_insert.sql
+# facts/fact_covid_encounter/sp_fact_covid_encounter_cleaning.sql
+# facts/fact_covid_encounter/sp_fact_covid_encounter.sql
 
-facts/fact_ugemr_art_encounter/sp_fact_art_encounter_create.sql
-facts/fact_ugemr_art_encounter/sp_fact_art_encounter_insert.sql
-facts/fact_ugemr_art_encounter/sp_fact_art_encounter.sql
+# facts/fact_ugemr_art_encounter/sp_fact_art_encounter_create.sql
+# facts/fact_ugemr_art_encounter/sp_fact_art_encounter_insert.sql
+# facts/fact_ugemr_art_encounter/sp_fact_art_encounter.sql
 
 sp_mamba_data_processing.sql

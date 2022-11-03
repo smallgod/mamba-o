@@ -5,10 +5,11 @@ DROP TABLE IF EXISTS dim_agegroup;
 -- $BEGIN
 CREATE TABLE dim_agegroup
 (
-    dim_age_id      INT          NOT NULL AUTO_INCREMENT,
-    age             INT          NULL,
-    datim_agegroup  NVARCHAR(50) NULL,
-    normal_agegroup NVARCHAR(50) NULL,
-    PRIMARY KEY (dim_age_id)
+    id              INT                            NOT NULL AUTO_INCREMENT,
+    age             INT                            NULL,
+    datim_agegroup  CHAR(50) CHARACTER SET UTF8MB4 NULL,
+    normal_agegroup CHAR(50) CHARACTER SET UTF8MB4 NULL,
+
+    PRIMARY KEY (id)
 );
 -- $END

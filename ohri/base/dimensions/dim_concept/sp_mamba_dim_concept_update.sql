@@ -1,4 +1,4 @@
-USE iss;
+USE analysis;
 
 -- $BEGIN
 -- UPDATE mamba_dim_concept c

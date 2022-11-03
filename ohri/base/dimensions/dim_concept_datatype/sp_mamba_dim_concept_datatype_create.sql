@@ -1,14 +1,15 @@
 USE analysis;
+
 DROP TABLE IF EXISTS mamba_dim_concept_datatype;
 
 -- $BEGIN
 CREATE TABLE mamba_dim_concept_datatype
 (
-    mamba_id            INT           NOT NULL AUTO_INCREMENT,
-    concept_datatype_id INT           NOT NULL,
-    name                NVARCHAR(255) NULL,
+    id                  INT                             NOT NULL AUTO_INCREMENT,
+    concept_datatype_id INT                             NOT NULL,
+    name                CHAR(255) CHARACTER SET UTF8MB4 NULL,
 
-    PRIMARY KEY (mamba_id)
+    PRIMARY KEY (id)
 );
 
 CREATE INDEX index_concept_datatype_id

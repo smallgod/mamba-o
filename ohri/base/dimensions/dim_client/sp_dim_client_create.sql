@@ -5,14 +5,15 @@ DROP TABLE IF EXISTS dim_client;
 -- $BEGIN
 CREATE TABLE dim_client
 (
-    id            INT           NOT NULL AUTO_INCREMENT,
+    id            INT                             NOT NULL AUTO_INCREMENT,
     client_id     INT,
-    date_of_birth DATE          NULL,
+    date_of_birth DATE,
     age           INT,
-    sex           NVARCHAR(255) NULL,
-    county        NVARCHAR(255) NULL,
-    sub_county    NVARCHAR(255) NULL,
-    ward          NVARCHAR(255) NULL,
+    sex           CHAR(255) CHARACTER SET UTF8MB4 NULL,
+    county        CHAR(255) CHARACTER SET UTF8MB4 NULL,
+    sub_county    CHAR(255) CHARACTER SET UTF8MB4 NULL,
+    ward          CHAR(255) CHARACTER SET UTF8MB4 NULL,
+
     PRIMARY KEY (id)
 );
 
