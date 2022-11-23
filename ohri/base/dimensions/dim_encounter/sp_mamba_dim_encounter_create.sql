@@ -1,4 +1,4 @@
-USE iss;
+USE analysis;
 
 DROP TABLE IF EXISTS mamba_dim_encounter;
 

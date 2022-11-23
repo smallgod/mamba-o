@@ -1,4 +1,4 @@
-USE iss;
+USE analysis;
 
 -- $BEGIN
 SET @form_data = LOAD_FILE('/Users/smallgod/srv/applications/mets/mamba-ohri/ohri/util/forms/covid-assessment-summary.json');
