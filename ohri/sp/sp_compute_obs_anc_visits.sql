@@ -51,7 +51,6 @@ BEGIN
         ORDER BY obs_id DESC LIMIT 1;
 
 
-    -- here
      -- Insert/Update computed Obs Status
     IF(anc_visit_count_old IS NULL) THEN
         INSERT INTO obs(date_created, obs_datetime, encounter_id, person_id, concept_id, value_numeric, uuid, creator)
