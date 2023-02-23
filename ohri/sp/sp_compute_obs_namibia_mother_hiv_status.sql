@@ -184,6 +184,19 @@ BEGIN
     ORDER BY obs_id DESC
     LIMIT 1;
 
+    -- if (Tested for HIV during this visit)
+    IF (hiv_test_status_answer = hiv_test_done_in_this_visit) THEN
+        -- Fetch the Response to the HIV Test Result
+        SET computed_obs_value_new = (SELECT o.value_coded
+                                      FROM obs o
+                                      WHERE o.concept_id = hiv_test_result
+                                        AND o.encounter_id = encounterid
+                                        AND o.person_id = patientid
+                                        AND o.voided = 0
+                                      ORDER BY obs_id DESC
+                                      LIMIT 1);
+    END IF;
+
     -- Set 'UNKNOWN' if (Not tested for HIV during this visit)
     IF (hiv_test_status_answer = hiv_test_not_done_in_this_visit) THEN
         SET computed_obs_value_new = hiv_status_unknown;
